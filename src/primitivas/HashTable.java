@@ -9,27 +9,15 @@ package primitivas;
  * @author carri
  */
 public class HashTable {
-    private Node array[];
+    private List array[];
     private int size;
 
-    public HashTable(Node[] array, int size) {
+    public HashTable(List[] array, int size) {
         this.array = array;
         this.size = size;
     }
 
-    /**
-     * @return the array
-     */
-    public Node[] getArray() {
-        return array;
-    }
 
-    /**
-     * @param array the array to set
-     */
-    public void setArray(Node[] array) {
-        this.array = array;
-    }
 
     /**
      * @return the size
@@ -43,6 +31,20 @@ public class HashTable {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+
+    /**
+     * @return the array
+     */
+    public List[] getArray() {
+        return array;
+    }
+
+    /**
+     * @param array the array to set
+     */
+    public void setArray(List[] array) {
+        this.array = array;
     }
     
     

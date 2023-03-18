@@ -13,7 +13,6 @@ public class Summary {
     private String authors; 
     private String body;
     private HashTable keywords;
-    private Node  next;
 
     //Aqui no estoy segura si poner lo de keywords
     public Summary(String title, String authors, String body, HashTable keywords) {
@@ -21,7 +20,6 @@ public class Summary {
         this.authors = authors;
         this.body = body;
         this.keywords = keywords;
-        this.next = null;
     }
 
     /**
@@ -83,16 +81,6 @@ public class Summary {
     /**
      * @return the next
      */
-    public Node getNext() {
-        return next;
-    }
-
-    /**
-     * @param next the next to set
-     */
-    public void setNext(Node next) {
-        this.next = next;
-    }
     
     
 }
