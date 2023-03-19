@@ -17,6 +17,10 @@ public class KeyWords {
         this.summary = summary;
     }
 
+    public KeyWords(String word) {
+        this.word = word;
+    }
+
     /**
      * @return the word
      */

@@ -9,8 +9,9 @@ package primitivas;
  * @author carri
  */
 public class Summary {
+
     private String title;
-    private String authors; 
+    private String authors;
     private String body;
     private HashTable keywords;
 
@@ -20,6 +21,14 @@ public class Summary {
         this.authors = authors;
         this.body = body;
         this.keywords = keywords;
+    }
+
+    //Aqui lo que quiero hacer es poner el tamaño de las palabras
+    public Summary(int size) {
+        this.title = "";
+        this.authors = "";
+        this.body = "";
+        this.keywords = new HashTable(size);
     }
 
     /**
@@ -81,6 +90,4 @@ public class Summary {
     /**
      * @return the next
      */
-    
-    
 }

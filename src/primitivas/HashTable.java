@@ -12,8 +12,8 @@ public class HashTable {
     private List array[];
     private int size;
 
-    public HashTable(List[] array, int size) {
-        this.array = array;
+    public HashTable(int size) {
+        this.array = new List[size];
         this.size = size;
     }
 
