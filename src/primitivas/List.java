@@ -20,6 +20,12 @@ public class List {
         this.size = 0;
     }
 
+    public List(Node pNew) {
+        this.pFirst = pNew;
+        this.pLast = pNew;
+        this.size = 1;
+    }
+
     //Method to empty my list
     public void empty() {
         this.pFirst = null;
@@ -35,13 +41,12 @@ public class List {
 
     //Append to list from the back
     public void addEnd(Node data) {
-        Node nuevo = new Node(data);
         if (this.isEmpty()) {
-            this.pFirst = nuevo;
-            this.pLast = nuevo;
+            this.pFirst = data;
+            this.pLast = data;
         } else {
-            this.getpLast().setpNext(nuevo);
-            this.pLast = nuevo;
+            this.getpLast().setpNext(data);
+            this.pLast = data;
         }
         this.size += 1;
     }
@@ -101,22 +106,22 @@ public class List {
 
     }
 
-    //Pocedimiento para colisiones en el hashtable de resumenes
+    //Pocedimiento para agregar los elemtnos al display
     public void addToListInAlphabeticalOrder(Summary resumen) {
-        Node<Summary> pNew = new Node(resumen);
+        Node<SummaryTitle> pNew = new Node(resumen.getTitle());
         boolean esta = false;
         if (this.isEmpty()) {
             this.setpFirst(pNew);
             this.setpLast(pNew);
         } else {
-            Node<Summary> pAux = this.getpFirst();
+            Node<SummaryTitle> pAux = this.getpFirst();
 
             for (int i = 0; i < this.getSize(); i++) {
                 if (pAux == pFirst) {
                     if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) < 0) {
                         this.addAtTheStart(pNew);
                         break;
-                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0) && (pNew.getData().getAuthors().equalsIgnoreCase(pAux.getData().getAuthors()))) {
+                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                         esta = true;
                         break;
                     }
@@ -125,7 +130,7 @@ public class List {
                     if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
                         this.addEnd(pNew);
                         break;
-                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0) && (pNew.getData().getAuthors().equalsIgnoreCase(pAux.getData().getAuthors()))) {
+                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                         esta = true;
                         break;
 
@@ -134,7 +139,7 @@ public class List {
                             pNew.setpNext(pAux.getpNext());
                             pAux.setpNext(pNew);
                             break;
-                        } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0) && (pNew.getData().getAuthors().equalsIgnoreCase(pAux.getData().getAuthors()))) {
+                        } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                             esta = true;
                             break;
                         }
@@ -145,6 +150,22 @@ public class List {
         }
         if (!esta) {
             this.setSize(this.getSize() + 1);
+        }
+    }
+
+    public void addSummariesToArray(Summary resumen) {
+        boolean esta = false;
+        if (!this.isEmpty()) {
+            Node<Summary> pAux = this.getpFirst();
+            for (int i = 0; i < this.getSize(); i++) {
+                if ((pAux.getData().getTitle().equalsIgnoreCase(resumen.getTitle())) && pAux.getData().getAuthors().equalsIgnoreCase(resumen.getAuthors())) {
+                    esta = true;
+                }
+            }
+        }
+        if (!esta) {
+            Node<Summary> pNew = new Node<>(resumen);
+            this.addEnd(pNew);
         }
     }
 
@@ -165,10 +186,13 @@ public class List {
             SummaryTitle sum = new SummaryTitle(summary);
             Node<SummaryTitle> pSum = new Node(sum);
             Author author = new Author(name);
+            if (author.getSummaries() == null) {
+                List lAux = new List();
+                author.setSummaries(lAux);
+            }
             author.getSummaries().addEnd(pSum);
             Node<Author> pAutor = new Node<>(author);
             this.addEnd(pAutor);
-            this.setSize(this.getSize() + 1);
         }
     }
 
@@ -189,10 +213,13 @@ public class List {
             SummaryTitle sum = new SummaryTitle(resumen);
             Node<SummaryTitle> pSum = new Node(sum);
             KeyWords kw = new KeyWords(palabra);
+            if (kw.getSummary() == null) {
+                List lAux = new List();
+                kw.setSummary(lAux);
+            }
             kw.getSummary().addEnd(pSum);
             Node<KeyWords> pKW = new Node<>(kw);
             this.addEnd(pKW);
-            this.setSize(this.getSize() + 1);
         }
     }
 
@@ -211,7 +238,6 @@ public class List {
             SummaryTitle sum = new SummaryTitle(summary);
             Node<SummaryTitle> pSum = new Node<>(sum);
             this.addEnd(pSum);
-            this.setSize(this.getSize() + 1);
         }
     }
 

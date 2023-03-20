@@ -14,6 +14,7 @@ public class Summary {
     private String authors;
     private String body;
     private HashTable keywords;
+    private boolean repeated;
 
     //Aqui no estoy segura si poner lo de keywords
     public Summary(String title, String authors, String body, HashTable keywords) {
@@ -21,6 +22,7 @@ public class Summary {
         this.authors = authors;
         this.body = body;
         this.keywords = keywords;
+        this.repeated = false;
     }
 
     //Aqui lo que quiero hacer es poner el tamaño de las palabras
@@ -29,6 +31,7 @@ public class Summary {
         this.authors = "";
         this.body = "";
         this.keywords = new HashTable(size);
+        this.repeated = false;
     }
 
     /**
@@ -85,6 +88,20 @@ public class Summary {
      */
     public void setKeywords(HashTable keywords) {
         this.keywords = keywords;
+    }
+
+    /**
+     * @return the repeated
+     */
+    public boolean isRepeated() {
+        return repeated;
+    }
+
+    /**
+     * @param repeated the repeated to set
+     */
+    public void setRepeated(boolean repeated) {
+        this.repeated = repeated;
     }
 
     /**

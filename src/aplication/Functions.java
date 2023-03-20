@@ -10,12 +10,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import primitivas.KW;
 import primitivas.KeyWords;
+import primitivas.List;
 import primitivas.Node;
 import primitivas.Summary;
 
@@ -49,28 +51,38 @@ public class Functions {
         return texto;
     }
 
-    public Summary read_string(String path) {
+    public Summary read_string(String summaryS) {
         try {
-            String texto = read_txt(path);
-            String[] elementosDelResumen = texto.split("\n\n");
-            String[] autores = elementosDelResumen[1].split("\n");
+            String[] elementosDelResumen = summaryS.split("Autores");
+            String[] autores_resumenpalabras = elementosDelResumen[1].split("Resumen");
+            String[] autores = autores_resumenpalabras[0].split("\n");
+
             String autoresS = "";
             for (int i = 1; i < autores.length; i++) {
-                autoresS += autores[i];
+                if (i != autores.length - 1) {
+                    autoresS += autores[i] + "\n";
+                } else {
+                    autoresS += autores[i];
+                }
             }
-            String[] content = elementosDelResumen[2].split("\n");
-            String[] palabras = elementosDelResumen[3].split(":");
+            String[] resumen_palabras = autores_resumenpalabras[1].split("\n");
+            String[] palabras = resumen_palabras[2].split(":");
             String[] pc = palabras[1].split(",");
 
             Summary newSummary = new Summary(pc.length);
             newSummary.setAuthors(autoresS);
             newSummary.setTitle(elementosDelResumen[0]);
-            newSummary.setBody(content[1]);
+            newSummary.setBody(resumen_palabras[1]);
 
             for (int i = 0; i < pc.length; i++) {
-                KW kwAux = new KW(pc[i], (content[1].split(pc[i]).length - 1));
+                KW kwAux = new KW(pc[i], (resumen_palabras[1].split(pc[i]).length - 1));
                 Node<KW> pAux = new Node<>(kwAux);
-                newSummary.getKeywords().getArray()[i].addEnd(pAux);
+                if (newSummary.getKeywords().getArray()[i] != null) {
+                    newSummary.getKeywords().getArray()[i].addEnd(pAux);
+                } else {
+                    List nuevaLista = new List(pAux);
+                    newSummary.getKeywords().getArray()[i] = nuevaLista;
+                }
             }
 
             return newSummary;
@@ -81,7 +93,7 @@ public class Functions {
     }
 
     public String read_directions() {
-        String direcciones = read_txt("archive\\direcciones.txt");
+        String direcciones = read_txt("src\\archive\\direcciones.txt");
         return direcciones;
     }
 
@@ -94,41 +106,56 @@ public class Functions {
 
     }
 
-    public void read_file(String route) {
+    public void read_file(String fileS) {
         //Aqui estamos agragando los resumenes
-        Summary resumen = read_string(route);
+        Summary resumen = read_string(fileS);
         int peso = 0;
         String titulo = resumen.getTitle().toLowerCase();
         for (int j = 0; j < titulo.length(); j++) {
-            peso += ((int) titulo.charAt(j)) * Math.pow(2, 9 - j);
+            peso += ((int) titulo.charAt(j));
         }
         int posicion = peso % 521;
-        Global.summaries.getArray()[posicion].addToListInAlphabeticalOrder(resumen);
+        if (Global.summaries.getArray()[posicion] == null) {
+            List lAux1 = new List();
+            Global.summaries.getArray()[posicion] = lAux1;
+        }
+        Global.summaries.getArray()[posicion].addSummariesToArray(resumen);
         //Aqui estamos agregando los autores
         String[] autores = resumen.getAuthors().split("\n");
         for (int j = 0; j < autores.length; j++) {
             int pesoA = 0;
-            for (int k = 0; k < 10; k++) {
+            for (int k = 0; k < autores[j].length(); k++) {
                 pesoA += (int) autores[j].charAt(k);
             }
             int posicionA = pesoA % 1031;
+            if (Global.authors.getArray()[posicionA] == null) {
+                List lAux2 = new List();
+                Global.authors.getArray()[posicionA] = lAux2;
+            }
             Global.authors.getArray()[posicionA].addAuthorToArray(autores[j], resumen.getTitle());
         }
 
         //Aqui estamos agragando el hashtable de las palabras clave
         for (int j = 0; j < resumen.getKeywords().getArray().length; j++) {
-            Node<KeyWords> pAux = resumen.getKeywords().getArray()[j].getpFirst();
+            Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
             int pesoKW = 0;
-            for (int k = 0; k < pAux.getData().getWord().length(); k++) {
-                pesoKW += (int) pAux.getData().getWord().charAt(k);
+            String palabra = pAux.getData().getPalabra();
+            for (int k = 1; k < palabra.length(); k++) {
+                pesoKW += (int) palabra.charAt(k);
             }
             int posicionKW = pesoKW % 4099;
-            Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getWord(), resumen.getTitle());
+            if (Global.keyWords.getArray()[posicionKW] == null) {
+                List lAux3 = new List();
+                Global.keyWords.getArray()[posicionKW] = lAux3;
+            }
+            Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getPalabra(), resumen.getTitle());
         }
+
+        Global.summariesDisp.addToListInAlphabeticalOrder(resumen);
 
     }
 
-    public void acces_new_file() {
+    public void acces_new_file() throws IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("", ".txt", "txt");
         fc.setFileFilter(filtro);
@@ -150,10 +177,25 @@ public class Functions {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error.");
             }
             read_file(texto);
+        File fileImport = new File(path);
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Ya existe este archivo.");
+        newPath = "src\\archive\\" + fileImport.getName();
+        String contenido = this.read_txt(path);
+
+        File newFile = new File(newPath);
+        try {
+            if (!newFile.exists()) {
+                newFile.createNewFile();
+            }
+            PrintWriter pw = new PrintWriter(newFile.getAbsolutePath());
+            pw.write(contenido);
+            pw.close();
+            this.read_file(contenido);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
 
+}
 }
