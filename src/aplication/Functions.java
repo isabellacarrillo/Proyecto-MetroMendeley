@@ -27,7 +27,7 @@ import primitivas.Summary;
  */
 public class Functions {
 
-    public String read_txt(String path) {
+     public String read_txt(String path) {
         String texto = "";
         Summary resumen = null;
         try {
@@ -155,31 +155,15 @@ public class Functions {
 
     }
 
-    public void acces_new_file() throws IOException {
+  public void access_new_file() throws IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("", ".txt", "txt");
         fc.setFileFilter(filtro);
         int seleccion = fc.showOpenDialog(fc);
         String path = fc.getSelectedFile().getAbsolutePath();
-        File f = new File(path);
-        String newPath = "archive\\prueba.txt" + f.getPath();
-        File f2 = new File(newPath);
-        if (!f2.exists()) {
-            String texto = this.read_txt(path);
-            try {
-                FileWriter fr = new FileWriter(f);
-                BufferedWriter bw = new BufferedWriter(fr);
-                PrintWriter pw = new PrintWriter(bw);
-                pw.write(texto);
-                pw.close();
-                bw.close();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrio un error.");
-            }
-            read_file(texto);
         File fileImport = new File(path);
 
-        newPath = "src\\archive\\" + fileImport.getName();
+        String newPath = "src\\archive\\" + fileImport.getName();
         String contenido = this.read_txt(path);
 
         File newFile = new File(newPath);
@@ -191,11 +175,10 @@ public class Functions {
             pw.write(contenido);
             pw.close();
             this.read_file(contenido);
+            JOptionPane.showMessageDialog(null, "Resumen Agregado Exitosamente!");          
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
-
-}
 }
