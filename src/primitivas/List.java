@@ -19,6 +19,12 @@ public class List {
         this.pLast = null;
         this.size = 0;
     }
+    
+        public List(Node pNew) {
+        this.pFirst = pNew;
+        this.pLast = pNew;
+        this.size = 1;
+    }
 
     //Method to empty my list
     public void empty() {

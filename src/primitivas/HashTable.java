@@ -13,6 +13,7 @@ public class HashTable {
     private int size;
 
     public HashTable(int size) {
+        
         this.array = new List[size];
         this.size = size;
     }
