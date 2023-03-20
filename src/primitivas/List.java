@@ -41,13 +41,12 @@ public class List {
 
     //Append to list from the back
     public void addEnd(Node data) {
-        Node nuevo = new Node(data);
         if (this.isEmpty()) {
-            this.pFirst = nuevo;
-            this.pLast = nuevo;
+            this.pFirst = data;
+            this.pLast = data;
         } else {
-            this.getpLast().setpNext(nuevo);
-            this.pLast = nuevo;
+            this.getpLast().setpNext(data);
+            this.pLast = data;
         }
         this.size += 1;
     }
@@ -194,7 +193,6 @@ public class List {
             author.getSummaries().addEnd(pSum);
             Node<Author> pAutor = new Node<>(author);
             this.addEnd(pAutor);
-            this.setSize(this.getSize() + 1);
         }
     }
 
@@ -222,7 +220,6 @@ public class List {
             kw.getSummary().addEnd(pSum);
             Node<KeyWords> pKW = new Node<>(kw);
             this.addEnd(pKW);
-            this.setSize(this.getSize() + 1);
         }
     }
 
@@ -241,7 +238,6 @@ public class List {
             SummaryTitle sum = new SummaryTitle(summary);
             Node<SummaryTitle> pSum = new Node<>(sum);
             this.addEnd(pSum);
-            this.setSize(this.getSize() + 1);
         }
     }
 
