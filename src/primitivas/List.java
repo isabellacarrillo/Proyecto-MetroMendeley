@@ -19,8 +19,8 @@ public class List {
         this.pLast = null;
         this.size = 0;
     }
-    
-        public List(Node pNew) {
+
+    public List(Node pNew) {
         this.pFirst = pNew;
         this.pLast = pNew;
         this.size = 1;
@@ -187,6 +187,10 @@ public class List {
             SummaryTitle sum = new SummaryTitle(summary);
             Node<SummaryTitle> pSum = new Node(sum);
             Author author = new Author(name);
+            if (author.getSummaries() == null) {
+                List lAux = new List();
+                author.setSummaries(lAux);
+            }
             author.getSummaries().addEnd(pSum);
             Node<Author> pAutor = new Node<>(author);
             this.addEnd(pAutor);
@@ -211,6 +215,10 @@ public class List {
             SummaryTitle sum = new SummaryTitle(resumen);
             Node<SummaryTitle> pSum = new Node(sum);
             KeyWords kw = new KeyWords(palabra);
+            if (kw.getSummary() == null) {
+                List lAux = new List();
+                kw.setSummary(lAux);
+            }
             kw.getSummary().addEnd(pSum);
             Node<KeyWords> pKW = new Node<>(kw);
             this.addEnd(pKW);

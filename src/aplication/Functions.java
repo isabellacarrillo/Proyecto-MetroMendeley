@@ -61,7 +61,7 @@ public class Functions {
             for (int i = 1; i < autores.length; i++) {
                 if (i != autores.length - 1) {
                     autoresS += autores[i] + "\n";
-                }else{
+                } else {
                     autoresS += autores[i];
                 }
             }
@@ -77,9 +77,9 @@ public class Functions {
             for (int i = 0; i < pc.length; i++) {
                 KW kwAux = new KW(pc[i], (resumen_palabras[1].split(pc[i]).length - 1));
                 Node<KW> pAux = new Node<>(kwAux);
-                if (newSummary.getKeywords().getArray()[i] != null){
-                newSummary.getKeywords().getArray()[i].addEnd(pAux);
-                }else{
+                if (newSummary.getKeywords().getArray()[i] != null) {
+                    newSummary.getKeywords().getArray()[i].addEnd(pAux);
+                } else {
                     List nuevaLista = new List(pAux);
                     newSummary.getKeywords().getArray()[i] = nuevaLista;
                 }
@@ -115,27 +115,40 @@ public class Functions {
             peso += ((int) titulo.charAt(j));
         }
         int posicion = peso % 521;
+        if (Global.summaries.getArray()[posicion] == null) {
+            List lAux1 = new List();
+            Global.summaries.getArray()[posicion] = lAux1;
+        }
         Global.summaries.getArray()[posicion].addSummariesToArray(resumen);
         //Aqui estamos agregando los autores
         String[] autores = resumen.getAuthors().split("\n");
         for (int j = 0; j < autores.length; j++) {
             int pesoA = 0;
-            for (int k = 0; k < 10; k++) {
+            for (int k = 0; k < autores[j].length(); k++) {
                 pesoA += (int) autores[j].charAt(k);
             }
             int posicionA = pesoA % 1031;
+            if (Global.authors.getArray()[posicionA] == null) {
+                List lAux2 = new List();
+                Global.authors.getArray()[posicionA] = lAux2;
+            }
             Global.authors.getArray()[posicionA].addAuthorToArray(autores[j], resumen.getTitle());
         }
 
         //Aqui estamos agragando el hashtable de las palabras clave
         for (int j = 0; j < resumen.getKeywords().getArray().length; j++) {
-            Node<KeyWords> pAux = resumen.getKeywords().getArray()[j].getpFirst();
+            Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
             int pesoKW = 0;
-            for (int k = 0; k < pAux.getData().getWord().length(); k++) {
-                pesoKW += (int) pAux.getData().getWord().charAt(k);
+            String palabra = pAux.getData().getPalabra();
+            for (int k = 1; k < palabra.length(); k++) {
+                pesoKW += (int) palabra.charAt(k);
             }
             int posicionKW = pesoKW % 4099;
-            Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getWord(), resumen.getTitle());
+            if (Global.keyWords.getArray()[posicionKW] == null) {
+                List lAux3 = new List();
+                Global.keyWords.getArray()[posicionKW] = lAux3;
+            }
+            Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getPalabra(), resumen.getTitle());
         }
 
         Global.summariesDisp.addToListInAlphabeticalOrder(resumen);
@@ -161,26 +174,11 @@ public class Functions {
             PrintWriter pw = new PrintWriter(newFile.getAbsolutePath());
             pw.write(contenido);
             pw.close();
-            this.read_string(contenido);
+            this.read_file(contenido);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
 
-//        String newPath = "archive\\" + f.getName();
-////        if (!f2.exists()) {
-//            String texto = this.read_txt(path);
-//            try {
-//                PrintWriter pw = new PrintWriter(newPath);
-//                pw.write(texto);
-//                pw.close();
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(null, "Ocurrio un error.");
-//            }   
-//            read_file(newPath);
-//
-////        } else {
-//            JOptionPane.showMessageDialog(null, "Ya existe este archivo.");
-////        }
 }
