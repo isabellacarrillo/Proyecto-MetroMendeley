@@ -135,7 +135,7 @@ public class Functions {
         int seleccion = fc.showOpenDialog(fc);
         String path = fc.getSelectedFile().getAbsolutePath();
         File f = new File(path);
-        String newPath = "archive\\" + f.getPath();
+        String newPath = "archive\\prueba.txt" + f.getPath();
         File f2 = new File(newPath);
         if (!f2.exists()) {
             String texto = this.read_txt(path);
