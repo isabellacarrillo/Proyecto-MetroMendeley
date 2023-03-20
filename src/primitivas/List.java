@@ -101,22 +101,22 @@ public class List {
 
     }
 
-    //Pocedimiento para colisiones en el hashtable de resumenes
+    //Pocedimiento para agregar los elemtnos al display
     public void addToListInAlphabeticalOrder(Summary resumen) {
-        Node<Summary> pNew = new Node(resumen);
+        Node<SummaryTitle> pNew = new Node(resumen.getTitle());
         boolean esta = false;
         if (this.isEmpty()) {
             this.setpFirst(pNew);
             this.setpLast(pNew);
         } else {
-            Node<Summary> pAux = this.getpFirst();
+            Node<SummaryTitle> pAux = this.getpFirst();
 
             for (int i = 0; i < this.getSize(); i++) {
                 if (pAux == pFirst) {
                     if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) < 0) {
                         this.addAtTheStart(pNew);
                         break;
-                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0) && (pNew.getData().getAuthors().equalsIgnoreCase(pAux.getData().getAuthors()))) {
+                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                         esta = true;
                         break;
                     }
@@ -125,7 +125,7 @@ public class List {
                     if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
                         this.addEnd(pNew);
                         break;
-                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0) && (pNew.getData().getAuthors().equalsIgnoreCase(pAux.getData().getAuthors()))) {
+                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                         esta = true;
                         break;
 
@@ -134,7 +134,7 @@ public class List {
                             pNew.setpNext(pAux.getpNext());
                             pAux.setpNext(pNew);
                             break;
-                        } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0) && (pNew.getData().getAuthors().equalsIgnoreCase(pAux.getData().getAuthors()))) {
+                        } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                             esta = true;
                             break;
                         }
@@ -145,6 +145,22 @@ public class List {
         }
         if (!esta) {
             this.setSize(this.getSize() + 1);
+        }
+    }
+
+    public void addSummariesToArray(Summary resumen) {
+        boolean esta = false;
+        if (!this.isEmpty()) {
+            Node<Summary> pAux = this.getpFirst();
+            for (int i = 0; i < this.getSize(); i++) {
+                if ((pAux.getData().getTitle().equalsIgnoreCase(resumen.getTitle())) && pAux.getData().getAuthors().equalsIgnoreCase(resumen.getAuthors())) {
+                    esta = true;
+                }
+            }
+        }
+        if (!esta) {
+            Node<Summary> pNew = new Node<>(resumen);
+            this.addEnd(pNew);
         }
     }
 

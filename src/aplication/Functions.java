@@ -100,10 +100,10 @@ public class Functions {
         int peso = 0;
         String titulo = resumen.getTitle().toLowerCase();
         for (int j = 0; j < titulo.length(); j++) {
-            peso += ((int) titulo.charAt(j)) * Math.pow(2, 9 - j);
+            peso += ((int) titulo.charAt(j));
         }
         int posicion = peso % 521;
-        Global.summaries.getArray()[posicion].addToListInAlphabeticalOrder(resumen);
+        Global.summaries.getArray()[posicion].addSummariesToArray(resumen);
         //Aqui estamos agregando los autores
         String[] autores = resumen.getAuthors().split("\n");
         for (int j = 0; j < autores.length; j++) {
@@ -125,6 +125,8 @@ public class Functions {
             int posicionKW = pesoKW % 4099;
             Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getWord(), resumen.getTitle());
         }
+        
+        Global.summariesDisp.addToListInAlphabeticalOrder(resumen);
 
     }
 
