@@ -4,6 +4,8 @@
  */
 package primitivas;
 
+import application.Global;
+
 /**
  *
  * @author carri
@@ -201,14 +203,7 @@ public class List {
         }
     }
     
-     public void isAuthorRepeated(String name, String summary){
-         Node <Author> aux = this.getpFirst();
-         if (aux.getData().getName().equalsIgnoreCase(name)){
-             
-         }
-        
-        
-    }
+
 
     public void addToKeyWordsHash(String palabra, String resumen) {
         boolean esta = false;

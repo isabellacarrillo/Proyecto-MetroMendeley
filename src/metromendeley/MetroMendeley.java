@@ -4,7 +4,9 @@
  */
 package metromendeley;
 
+import application.Global;
 import interfaces.Interface;
+import application.InterfaceCode;
 
 
 
@@ -20,8 +22,10 @@ public class MetroMendeley {
      */
     public static void main(String[] args)  {
         // TODO code application logic here
-        Interface interfaz = new Interface();
-        interfaz.show();
+        Global.initializeApp();
+        InterfaceCode.openMainPage();
+        
+
         
        
         

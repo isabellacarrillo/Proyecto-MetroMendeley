@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import application.InterfaceCode;
+
 /**
  *
  * @author carri
@@ -45,7 +47,7 @@ public class searchAuthor extends javax.swing.JFrame {
         selectedRutesLabel.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         selectedRutesLabel.setForeground(new java.awt.Color(255, 255, 255));
         selectedRutesLabel.setText(" Resumen:");
-        jPanel2.add(selectedRutesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 180, -1));
+        jPanel2.add(selectedRutesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 180, -1));
 
         transmitterStorage.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         transmitterStorage.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,7 +109,7 @@ public class searchAuthor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backToTheMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToTheMenuButtonActionPerformed
-
+        InterfaceCode.returnToMainPage();
     }//GEN-LAST:event_backToTheMenuButtonActionPerformed
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed

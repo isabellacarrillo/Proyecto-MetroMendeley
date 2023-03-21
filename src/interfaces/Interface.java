@@ -4,8 +4,9 @@
  */
 package interfaces;
 
-import aplication.Functions;
-import aplication.Global;
+import application.InterfaceCode;
+import application.Functions;
+import application.Global;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -257,7 +258,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_analizeSummaryButtonActionPerformed
 
     private void searchKeywordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchKeywordsButtonActionPerformed
-    
+        InterfaceCode.openSearchKeyWords();
     }//GEN-LAST:event_searchKeywordsButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -267,6 +268,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void searchAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAuthorButtonActionPerformed
         // TODO add your handling code here:
+        InterfaceCode.openSearchAuthor();
     }//GEN-LAST:event_searchAuthorButtonActionPerformed
 
     private void analizeSummaryButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeSummaryButton1ActionPerformed

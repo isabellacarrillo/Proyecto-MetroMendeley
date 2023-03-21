@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import application.InterfaceCode;
+
 /**
  *
  * @author carri
@@ -95,6 +97,7 @@ public class searchKeyWords extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backToTheMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToTheMenuButtonActionPerformed
+            InterfaceCode.returnToMainPage();
     }//GEN-LAST:event_backToTheMenuButtonActionPerformed
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
