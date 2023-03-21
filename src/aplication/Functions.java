@@ -27,7 +27,10 @@ import primitivas.Summary;
  */
 public class Functions {
 
-     public String read_txt(String path) {
+    /*
+    Este metodo devuelvew el contenido dentro de un txt
+     */
+    public String read_txt(String path) {
         String texto = "";
         Summary resumen = null;
         try {
@@ -51,6 +54,9 @@ public class Functions {
         return texto;
     }
 
+    /*
+    Este metodo devuelve un Summary con parametro de loleido en un archivo de texto
+     */
     public Summary read_string(String summaryS) {
         try {
             String[] elementosDelResumen = summaryS.split("Autores");
@@ -92,21 +98,31 @@ public class Functions {
         return null;
     }
 
+    /*
+    Este metodo devuelve un string de todo lo leido en el txt donde se guardan la sdirecciones de los resumenes guardados previamente
+     */
     public String read_directions() {
         String direcciones = read_txt("src\\archive\\direcciones.txt");
         return direcciones;
     }
 
+    /*
+    Este procedimeinto inicializa la informacion a la hora de empezar el programa
+     */
     public void initializeData() {
         String[] direcciones = read_directions().split("\n");
         for (int i = 0; i < direcciones.length; i++) {
-            read_file(direcciones[i]);
-
+            String resumenS = read_txt(direcciones[i]);
+            this.read_file(resumenS);
         }
 
     }
 
-    public void read_file(String fileS) {
+    /*
+    Este metodo agrega a las variables globales todos los datos que son atributos de ella tras recibir el texto del archivo leido.
+    Devuelve un booleano en caso de que ya se encuentre registrado o no lo que se quiere agregar
+     */
+    public boolean read_file(String fileS) {
         //Aqui estamos agragando los resumenes
         Summary resumen = read_string(fileS);
         int peso = 0;
@@ -120,42 +136,51 @@ public class Functions {
             Global.summaries.getArray()[posicion] = lAux1;
         }
         Global.summaries.getArray()[posicion].addSummariesToArray(resumen);
-        //Aqui estamos agregando los autores
-        String[] autores = resumen.getAuthors().split("\n");
-        for (int j = 0; j < autores.length; j++) {
-            int pesoA = 0;
-            for (int k = 0; k < autores[j].length(); k++) {
-                pesoA += (int) autores[j].charAt(k);
+        if (!resumen.getIsRepeated()) {
+            //Aqui estamos agregando los autores
+            String[] autores = resumen.getAuthors().split("\n");
+            for (int j = 0; j < autores.length; j++) {
+                int pesoA = 0;
+                for (int k = 0; k < autores[j].length(); k++) {
+                    pesoA += (int) autores[j].charAt(k);
+                }
+                int posicionA = pesoA % 1031;
+                if (Global.authors.getArray()[posicionA] == null) {
+                    List lAux2 = new List();
+                    Global.authors.getArray()[posicionA] = lAux2;
+                }
+                Global.authors.getArray()[posicionA].addAuthorToArray(autores[j], resumen.getTitle());
             }
-            int posicionA = pesoA % 1031;
-            if (Global.authors.getArray()[posicionA] == null) {
-                List lAux2 = new List();
-                Global.authors.getArray()[posicionA] = lAux2;
+
+            //Aqui estamos agragando el hashtable de las palabras clave
+            for (int j = 0; j < resumen.getKeywords().getArray().length; j++) {
+                Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
+                int pesoKW = 0;
+                String palabra = pAux.getData().getPalabra();
+                for (int k = 1; k < palabra.length(); k++) {
+                    pesoKW += (int) palabra.charAt(k);
+                }
+                int posicionKW = pesoKW % 4099;
+                if (Global.keyWords.getArray()[posicionKW] == null) {
+                    List lAux3 = new List();
+                    Global.keyWords.getArray()[posicionKW] = lAux3;
+                }
+                Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getPalabra(), resumen.getTitle());
             }
-            Global.authors.getArray()[posicionA].addAuthorToArray(autores[j], resumen.getTitle());
+
+            Global.summariesDisp.addToListInAlphabeticalOrder(resumen);
+
         }
-
-        //Aqui estamos agragando el hashtable de las palabras clave
-        for (int j = 0; j < resumen.getKeywords().getArray().length; j++) {
-            Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
-            int pesoKW = 0;
-            String palabra = pAux.getData().getPalabra();
-            for (int k = 1; k < palabra.length(); k++) {
-                pesoKW += (int) palabra.charAt(k);
-            }
-            int posicionKW = pesoKW % 4099;
-            if (Global.keyWords.getArray()[posicionKW] == null) {
-                List lAux3 = new List();
-                Global.keyWords.getArray()[posicionKW] = lAux3;
-            }
-            Global.keyWords.getArray()[posicionKW].addToKeyWordsHash(pAux.getData().getPalabra(), resumen.getTitle());
-        }
-
-        Global.summariesDisp.addToListInAlphabeticalOrder(resumen);
-
+        return resumen.getIsRepeated();
     }
 
-  public void access_new_file() throws IOException {
+    
+    /*
+    Dado un archivo, se lee y se empieza a agregart a las variables globales, en caso de que ya este, no hace mas nada. Si no esta, agrega a las 
+    variables globales los datos nuievos y agrega la direccion all archivo direcciones.txt
+    */
+    public void access_new_file() throws IOException {
+        boolean registered = false;
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("", ".txt", "txt");
         fc.setFileFilter(filtro);
@@ -174,11 +199,35 @@ public class Functions {
             PrintWriter pw = new PrintWriter(newFile.getAbsolutePath());
             pw.write(contenido);
             pw.close();
-            this.read_file(contenido);
-            JOptionPane.showMessageDialog(null, "Resumen Agregado Exitosamente!");          
+            registered = this.read_file(contenido);
+            JOptionPane.showMessageDialog(null, "Resumen Agregado Exitosamente!");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+
+        if (!registered) {
+            try {
+                String direcciones = "";
+                direcciones = this.read_directions() + newPath;
+                PrintWriter pw = new PrintWriter("src\\archive\\direcciones.txt");
+                pw.print(direcciones);
+                pw.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ocurrio un error añadiendo al nueva direccion: " + e);
+            }
+        }
+    }
+
+    /*
+    Procedimiento que carga la data incial.
+    */
+    public void loadIntialData() {
+        String direcciones = this.read_directions();
+        String[] direccion = direcciones.split("\n");
+        for (int i = 0; i < direccion.length - 1; i++) {
+            String data = this.read_txt(direccion[i]);
+            this.read_file(data);
         }
     }
 }
