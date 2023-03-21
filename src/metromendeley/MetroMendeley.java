@@ -4,9 +4,9 @@
  */
 package metromendeley;
 
-import aplication.Functions;
-import aplication.Global;
-import java.io.IOException;
+import interfaces.Interface;
+
+
 
 
 /**
@@ -18,11 +18,12 @@ public class MetroMendeley {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         // TODO code application logic here
-        Functions fc = new Functions();
-        Global.initializeApp();
-        fc.access_new_file();
+        Interface interfaz = new Interface();
+        interfaz.show();
+        
+       
         
     }
     

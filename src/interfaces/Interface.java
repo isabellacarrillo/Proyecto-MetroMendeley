@@ -4,6 +4,12 @@
  */
 package interfaces;
 
+import aplication.Functions;
+import aplication.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author carri
@@ -56,7 +62,6 @@ public class Interface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,19 +222,8 @@ public class Interface extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("Metro Mendeley");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 290, 40));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 290, 40));
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("GUARDAR DATOS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 170, 30));
 
         jPanel12.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 70));
 
@@ -246,7 +240,16 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_invReportButtonActionPerformed
 
     private void addSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSummaryButtonActionPerformed
+        try {
+            Functions fc = new Functions();
+            Global.initializeApp();
+            fc.access_new_file();
+        } catch (IOException ex) {
+            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
       
+    
+        
     }//GEN-LAST:event_addSummaryButtonActionPerformed
 
     private void analizeSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeSummaryButtonActionPerformed
@@ -269,10 +272,6 @@ public class Interface extends javax.swing.JFrame {
     private void analizeSummaryButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeSummaryButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_analizeSummaryButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,7 +314,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton analizeSummaryButton1;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton invReportButton;
-    private javax.swing.JButton jButton2;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel11;
