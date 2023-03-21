@@ -4,7 +4,10 @@
  */
 package primitivas;
 
+<<<<<<< HEAD
 import application.Global;
+=======
+>>>>>>> 7f7a57404ae24a5306fbf5669857dfd6f46e25dc
 
 /**
  *
@@ -55,14 +58,11 @@ public class List {
 
     //Method to add at the start of my list
     public void addAtTheStart(Node data) {
-        Node nuevo = new Node(data);
-        nuevo.setData(data);
-
         if (isEmpty()) {
-            this.pFirst = nuevo;
+            this.setpFirst(data);
         } else {
-            nuevo.setpNext(this.pFirst);
-            this.pFirst = nuevo;
+            data.setpNext(this.getpFirst());
+            this.setpFirst(data);
         }
         this.size += 1;
     }
@@ -116,6 +116,7 @@ public class List {
         if (this.isEmpty()) {
             this.setpFirst(pNew);
             this.setpLast(pNew);
+            this.setSize(this.getSize() + 1);
         } else {
             Node<SummaryTitle> pAux = this.getpFirst();
 
@@ -153,8 +154,31 @@ public class List {
                 }
             }
         }
-        if (!esta) {
-            this.setSize(this.getSize() + 1);
+
+    }
+    
+    //Procedimiento que agrega autores al Global
+        public void agregarAutorAlDisplay(String nombre) {
+        Author newAuthor = new Author(nombre);
+        Node<Author> pNew = new Node(newAuthor);
+        boolean esta = false;
+        Node<Author> pAux = this.getpFirst();
+        if (this.isEmpty()) {
+            this.setpFirst(pNew);
+            this.setpLast(pNew);
+            this.setSize(1);
+            esta = true;
+        } else {
+            for (int i = 0; i < this.getSize(); i++) {
+                if ((pAux.getData().getName()).equalsIgnoreCase(nombre)) {
+                    esta = true;
+                    break;
+                }
+                pAux = pAux.getpNext();
+            }
+        }
+        if (!esta){
+            this.addEnd(pNew);
         }
     }
 

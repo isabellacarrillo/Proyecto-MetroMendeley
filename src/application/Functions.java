@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import primitivas.Author;
 import primitivas.KW;
 import primitivas.KeyWords;
 import primitivas.List;
@@ -149,6 +150,7 @@ public class Functions {
                     List lAux2 = new List();
                     Global.authors.getArray()[posicionA] = lAux2;
                 }
+                Global.authorsDisp.agregarAutorAlDisplay(autores[j]);
                 Global.authors.getArray()[posicionA].addAuthorToArray(autores[j], resumen.getTitle());
             }
 
