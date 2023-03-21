@@ -53,14 +53,11 @@ public class List {
 
     //Method to add at the start of my list
     public void addAtTheStart(Node data) {
-        Node nuevo = new Node(data);
-        nuevo.setData(data);
-
         if (isEmpty()) {
-            this.pFirst = nuevo;
+            this.setpFirst(data);
         } else {
-            nuevo.setpNext(this.pFirst);
-            this.pFirst = nuevo;
+            data.setpNext(this.getpFirst());
+            this.setpFirst(data);
         }
         this.size += 1;
     }
@@ -114,6 +111,7 @@ public class List {
         if (this.isEmpty()) {
             this.setpFirst(pNew);
             this.setpLast(pNew);
+            this.setSize(this.getSize() + 1);
         } else {
             Node<SummaryTitle> pAux = this.getpFirst();
 
@@ -151,9 +149,7 @@ public class List {
                 }
             }
         }
-        if (!esta) {
-            this.setSize(this.getSize() + 1);
-        }
+
     }
 
     public void addSummariesToArray(Summary resumen) {
