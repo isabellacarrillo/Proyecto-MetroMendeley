@@ -20,7 +20,7 @@ public class Main {
         
         Functions f = new Functions();
         Global.initializeApp();
-        f.access_new_file();
+        f.initializeData();
         
     }
     

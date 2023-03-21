@@ -93,7 +93,7 @@ public class Summary {
     /**
      * @return the repeated
      */
-    public boolean isRepeated() {
+    public boolean getIsRepeated() {
         return repeated;
     }
 

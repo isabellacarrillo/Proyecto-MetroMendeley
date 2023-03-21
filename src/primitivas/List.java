@@ -108,7 +108,8 @@ public class List {
 
     //Pocedimiento para agregar los elemtnos al display
     public void addToListInAlphabeticalOrder(Summary resumen) {
-        Node<SummaryTitle> pNew = new Node(resumen.getTitle());
+        SummaryTitle New = new SummaryTitle(resumen.getTitle());
+        Node<SummaryTitle> pNew = new Node(New);
         boolean esta = false;
         if (this.isEmpty()) {
             this.setpFirst(pNew);
@@ -117,16 +118,16 @@ public class List {
             Node<SummaryTitle> pAux = this.getpFirst();
 
             for (int i = 0; i < this.getSize(); i++) {
-                if (pAux == pFirst) {
-                    if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) < 0) {
+                if (pAux.equals(this.getpFirst())) {
+                    if ((pNew.getData().getTitle()).compareToIgnoreCase(pAux.getData().getTitle()) < 0) {
                         this.addAtTheStart(pNew);
                         break;
                     } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                         esta = true;
                         break;
-                    }
+                    
                 }
-                if ((pAux == pLast)) {
+                if ((pAux.equals(this.getpLast()))) {
                     if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
                         this.addEnd(pNew);
                         break;
@@ -160,6 +161,7 @@ public class List {
             for (int i = 0; i < this.getSize(); i++) {
                 if ((pAux.getData().getTitle().equalsIgnoreCase(resumen.getTitle())) && pAux.getData().getAuthors().equalsIgnoreCase(resumen.getAuthors())) {
                     esta = true;
+                    resumen.setRepeated(true);
                 }
             }
         }
@@ -167,6 +169,7 @@ public class List {
             Node<Summary> pNew = new Node<>(resumen);
             this.addEnd(pNew);
         }
+
     }
 
     public void addAuthorToArray(String name, String summary) {
