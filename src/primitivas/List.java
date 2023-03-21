@@ -4,6 +4,7 @@
  */
 package primitivas;
 
+
 /**
  *
  * @author carri
@@ -150,6 +151,31 @@ public class List {
             }
         }
 
+    }
+    
+    //Procedimiento que agrega autores al Global
+        public void agregarAutorAlDisplay(String nombre) {
+        Author newAuthor = new Author(nombre);
+        Node<Author> pNew = new Node(newAuthor);
+        boolean esta = false;
+        Node<Author> pAux = this.getpFirst();
+        if (this.isEmpty()) {
+            this.setpFirst(pNew);
+            this.setpLast(pNew);
+            this.setSize(1);
+            esta = true;
+        } else {
+            for (int i = 0; i < this.getSize(); i++) {
+                if ((pAux.getData().getName()).equalsIgnoreCase(nombre)) {
+                    esta = true;
+                    break;
+                }
+                pAux = pAux.getpNext();
+            }
+        }
+        if (!esta){
+            this.addEnd(pNew);
+        }
     }
 
     public void addSummariesToArray(Summary resumen) {
