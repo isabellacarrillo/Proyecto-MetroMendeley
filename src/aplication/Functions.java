@@ -27,7 +27,7 @@ import primitivas.Summary;
  */
 public class Functions {
 
-    public String read_txt(String path) {
+     public String read_txt(String path) {
         String texto = "";
         Summary resumen = null;
         try {
@@ -155,7 +155,7 @@ public class Functions {
 
     }
 
-    public void acces_new_file() throws IOException {
+  public void access_new_file() throws IOException {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("", ".txt", "txt");
         fc.setFileFilter(filtro);
@@ -175,10 +175,10 @@ public class Functions {
             pw.write(contenido);
             pw.close();
             this.read_file(contenido);
+            JOptionPane.showMessageDialog(null, "Resumen Agregado Exitosamente!");          
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
-
 }

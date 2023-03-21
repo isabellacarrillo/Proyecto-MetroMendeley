@@ -18,12 +18,14 @@ public class Global {
   public static HashTable keyWords;
   public static HashTable authors;
   public static List summariesDisp;
+  public static List authorsDisp;
   
   public static void initializeApp(){
       summaries = new HashTable(521);
       authors = new HashTable(1031);
       keyWords = new HashTable(4099);
       summariesDisp = new List();
+      authorsDisp = new List();
       
   }
     

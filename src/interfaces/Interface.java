@@ -30,23 +30,24 @@ public class Interface extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        uploadDataButton = new javax.swing.JButton();
+        addSummaryButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        addNewRutesButton = new javax.swing.JButton();
+        analizeSummaryButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        analizeSummaryButton1 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        newOrderButton = new javax.swing.JButton();
+        searchKeywordsButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         invReportButton = new javax.swing.JButton();
-        addNewRutesButton1 = new javax.swing.JButton();
+        searchAuthorButton = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        newStorageButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -55,6 +56,7 @@ public class Interface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,19 +69,19 @@ public class Interface extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(153, 0, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        uploadDataButton.setBackground(new java.awt.Color(0, 0, 0));
-        uploadDataButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        uploadDataButton.setForeground(new java.awt.Color(255, 255, 255));
-        uploadDataButton.setText("AGREGAR RESUMEN");
-        uploadDataButton.setToolTipText("");
-        uploadDataButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        uploadDataButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        uploadDataButton.addActionListener(new java.awt.event.ActionListener() {
+        addSummaryButton.setBackground(new java.awt.Color(0, 0, 0));
+        addSummaryButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        addSummaryButton.setForeground(new java.awt.Color(255, 255, 255));
+        addSummaryButton.setText("AGREGAR RESUMEN");
+        addSummaryButton.setToolTipText("");
+        addSummaryButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addSummaryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addSummaryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uploadDataButtonActionPerformed(evt);
+                addSummaryButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(uploadDataButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 146, 170, 30));
+        jPanel6.add(addSummaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 146, 170, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paper1.jpg"))); // NOI18N
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 80, 100));
@@ -90,39 +92,52 @@ public class Interface extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 21, -1, -1));
 
-        addNewRutesButton.setBackground(new java.awt.Color(0, 0, 0));
-        addNewRutesButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        addNewRutesButton.setForeground(new java.awt.Color(255, 255, 255));
-        addNewRutesButton.setText("ANALIZAR RESUMEN");
-        addNewRutesButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addNewRutesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        addNewRutesButton.addActionListener(new java.awt.event.ActionListener() {
+        analizeSummaryButton.setBackground(new java.awt.Color(0, 0, 0));
+        analizeSummaryButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        analizeSummaryButton.setForeground(new java.awt.Color(255, 255, 255));
+        analizeSummaryButton.setText("ANALIZAR RESUMEN");
+        analizeSummaryButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        analizeSummaryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        analizeSummaryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewRutesButtonActionPerformed(evt);
+                analizeSummaryButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(addNewRutesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, 30));
+        jPanel7.add(analizeSummaryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/teacher.png"))); // NOI18N
         jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
+        analizeSummaryButton1.setBackground(new java.awt.Color(0, 0, 0));
+        analizeSummaryButton1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        analizeSummaryButton1.setForeground(new java.awt.Color(255, 255, 255));
+        analizeSummaryButton1.setText("ANALIZAR RESUMEN");
+        analizeSummaryButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        analizeSummaryButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        analizeSummaryButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analizeSummaryButton1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(analizeSummaryButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, 30));
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 210, 200));
 
         jPanel8.setBackground(new java.awt.Color(153, 0, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        newOrderButton.setBackground(new java.awt.Color(0, 0, 0));
-        newOrderButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        newOrderButton.setForeground(new java.awt.Color(255, 255, 255));
-        newOrderButton.setText("BUSCAR POR KEYWORDS");
-        newOrderButton.setBorder(null);
-        newOrderButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        newOrderButton.addActionListener(new java.awt.event.ActionListener() {
+        searchKeywordsButton.setBackground(new java.awt.Color(0, 0, 0));
+        searchKeywordsButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        searchKeywordsButton.setForeground(new java.awt.Color(255, 255, 255));
+        searchKeywordsButton.setText("BUSCAR POR KEYWORDS");
+        searchKeywordsButton.setBorder(null);
+        searchKeywordsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchKeywordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newOrderButtonActionPerformed(evt);
+                searchKeywordsButtonActionPerformed(evt);
             }
         });
-        jPanel8.add(newOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 30));
+        jPanel8.add(searchKeywordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 30));
         jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 122, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dictionary.jpg"))); // NOI18N
@@ -146,18 +161,18 @@ public class Interface extends javax.swing.JFrame {
         });
         jPanel9.add(invReportButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 170, 30));
 
-        addNewRutesButton1.setBackground(new java.awt.Color(0, 0, 0));
-        addNewRutesButton1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        addNewRutesButton1.setForeground(new java.awt.Color(255, 255, 255));
-        addNewRutesButton1.setText("BUSCAR POR AUTOR");
-        addNewRutesButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addNewRutesButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        addNewRutesButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchAuthorButton.setBackground(new java.awt.Color(0, 0, 0));
+        searchAuthorButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        searchAuthorButton.setForeground(new java.awt.Color(255, 255, 255));
+        searchAuthorButton.setText("BUSCAR POR AUTOR");
+        searchAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchAuthorButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchAuthorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewRutesButton1ActionPerformed(evt);
+                searchAuthorButtonActionPerformed(evt);
             }
         });
-        jPanel9.add(addNewRutesButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 170, 30));
+        jPanel9.add(searchAuthorButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 170, 30));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/author.png"))); // NOI18N
         jLabel13.setText("jLabel13");
@@ -169,18 +184,18 @@ public class Interface extends javax.swing.JFrame {
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 18, -1, -1));
 
-        newStorageButton.setBackground(new java.awt.Color(0, 0, 0));
-        newStorageButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        newStorageButton.setForeground(new java.awt.Color(255, 255, 255));
-        newStorageButton.setText("SALIR/GUARDAR INFO");
-        newStorageButton.setBorder(null);
-        newStorageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        newStorageButton.addActionListener(new java.awt.event.ActionListener() {
+        exitButton.setBackground(new java.awt.Color(0, 0, 0));
+        exitButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        exitButton.setForeground(new java.awt.Color(255, 255, 255));
+        exitButton.setText("SALIR/GUARDAR INFO");
+        exitButton.setBorder(null);
+        exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newStorageButtonActionPerformed(evt);
+                exitButtonActionPerformed(evt);
             }
         });
-        jPanel10.add(newStorageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 170, 30));
+        jPanel10.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 170, 30));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.jpg"))); // NOI18N
         jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 110, 50));
@@ -202,8 +217,19 @@ public class Interface extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("Metro Mendeley");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 290, 40));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 290, 40));
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("GUARDAR DATOS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 170, 30));
 
         jPanel12.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 70));
 
@@ -219,26 +245,34 @@ public class Interface extends javax.swing.JFrame {
        
     }//GEN-LAST:event_invReportButtonActionPerformed
 
-    private void uploadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadDataButtonActionPerformed
+    private void addSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSummaryButtonActionPerformed
       
-    }//GEN-LAST:event_uploadDataButtonActionPerformed
+    }//GEN-LAST:event_addSummaryButtonActionPerformed
 
-    private void addNewRutesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewRutesButtonActionPerformed
+    private void analizeSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeSummaryButtonActionPerformed
    
-    }//GEN-LAST:event_addNewRutesButtonActionPerformed
+    }//GEN-LAST:event_analizeSummaryButtonActionPerformed
 
-    private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newOrderButtonActionPerformed
+    private void searchKeywordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchKeywordsButtonActionPerformed
     
-    }//GEN-LAST:event_newOrderButtonActionPerformed
+    }//GEN-LAST:event_searchKeywordsButtonActionPerformed
 
-    private void newStorageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newStorageButtonActionPerformed
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
 
       
-    }//GEN-LAST:event_newStorageButtonActionPerformed
+    }//GEN-LAST:event_exitButtonActionPerformed
 
-    private void addNewRutesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewRutesButton1ActionPerformed
+    private void searchAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAuthorButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addNewRutesButton1ActionPerformed
+    }//GEN-LAST:event_searchAuthorButtonActionPerformed
+
+    private void analizeSummaryButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeSummaryButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_analizeSummaryButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,9 +310,12 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addNewRutesButton;
-    private javax.swing.JButton addNewRutesButton1;
+    private javax.swing.JButton addSummaryButton;
+    private javax.swing.JButton analizeSummaryButton;
+    private javax.swing.JButton analizeSummaryButton1;
+    private javax.swing.JButton exitButton;
     private javax.swing.JButton invReportButton;
+    private javax.swing.JButton jButton2;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel11;
@@ -302,8 +339,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JButton newOrderButton;
-    private javax.swing.JButton newStorageButton;
-    private javax.swing.JButton uploadDataButton;
+    private javax.swing.JButton searchAuthorButton;
+    private javax.swing.JButton searchKeywordsButton;
     // End of variables declaration//GEN-END:variables
 }
