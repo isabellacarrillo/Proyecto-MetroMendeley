@@ -118,6 +118,7 @@ public class List {
             Node<SummaryTitle> pAux = this.getpFirst();
 
             for (int i = 0; i < this.getSize(); i++) {
+                String oldAuthor = pAux.getData().getTitle();
                 if (pAux.equals(this.getpFirst())) {
                     if ((pNew.getData().getTitle()).compareToIgnoreCase(pAux.getData().getTitle()) < 0) {
                         this.addAtTheStart(pNew);
@@ -125,27 +126,28 @@ public class List {
                     } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                         esta = true;
                         break;
-                    
-                }
-                if ((pAux.equals(this.getpLast()))) {
-                    if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
-                        this.addEnd(pNew);
-                        break;
-                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
-                        esta = true;
-                        break;
 
-                    } else {
-                        if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getpNext().getData().getTitle()) < 0) {
-                            pNew.setpNext(pAux.getpNext());
-                            pAux.setpNext(pNew);
+                    }
+                    if ((pAux.equals(this.getpLast()))) {
+                        if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
+                            this.addEnd(pNew);
                             break;
                         } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
                             esta = true;
                             break;
+
+                        } else {
+                            if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getpNext().getData().getTitle()) < 0) {
+                                pNew.setpNext(pAux.getpNext());
+                                pAux.setpNext(pNew);
+                                break;
+                            } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
+                                esta = true;
+                                break;
+                            }
                         }
+                        pAux = pAux.getpNext();
                     }
-                    pAux = pAux.getpNext();
                 }
             }
         }
