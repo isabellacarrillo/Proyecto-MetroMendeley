@@ -4,10 +4,7 @@
  */
 package primitivas;
 
-<<<<<<< HEAD
 import application.Global;
-=======
->>>>>>> 7f7a57404ae24a5306fbf5669857dfd6f46e25dc
 
 /**
  *

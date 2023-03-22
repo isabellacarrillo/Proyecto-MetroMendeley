@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplication;
+package application;
 
 import primitivas.Author;
 import primitivas.HashTable;
@@ -16,7 +16,7 @@ import primitivas.SummaryTitle;
  *
  * @author Andres
  */
-public class InterfaceFuncitons {
+public class InterfaceFunctions {
 
     /*
     Estos metodos son para la busqueda del resumen
