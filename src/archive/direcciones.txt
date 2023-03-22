@@ -1,3 +1,4 @@
 src\archive\resumen1.txt
 src\archive\resumen2.txt
-src\archive\resumen3.txt.txt
+src\archive\resumen3.txt
+src\archive\resumen4.txt
