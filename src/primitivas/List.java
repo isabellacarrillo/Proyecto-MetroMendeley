@@ -6,7 +6,6 @@ package primitivas;
 
 import application.Global;
 
-
 /**
  *
  * @author carri
@@ -147,16 +146,16 @@ public class List {
                                 break;
                             }
                         }
-                        pAux = pAux.getpNext();
                     }
+                    pAux = pAux.getpNext();
                 }
             }
         }
 
     }
-    
+
     //Procedimiento que agrega autores al Global
-        public void agregarAutorAlDisplay(String nombre) {
+    public void agregarAutorAlDisplay(String nombre) {
         Author newAuthor = new Author(nombre);
         Node<Author> pNew = new Node(newAuthor);
         boolean esta = false;
@@ -175,7 +174,7 @@ public class List {
                 pAux = pAux.getpNext();
             }
         }
-        if (!esta){
+        if (!esta) {
             this.addEnd(pNew);
         }
     }
@@ -224,8 +223,6 @@ public class List {
             this.addEnd(pAutor);
         }
     }
-    
-
 
     public void addToKeyWordsHash(String palabra, String resumen) {
         boolean esta = false;

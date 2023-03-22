@@ -245,7 +245,6 @@ public class Interface extends javax.swing.JFrame {
     private void addSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSummaryButtonActionPerformed
         try {
             Functions fc = new Functions();
-            Global.initializeApp();
             fc.access_new_file();
         } catch (IOException ex) {
             Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
