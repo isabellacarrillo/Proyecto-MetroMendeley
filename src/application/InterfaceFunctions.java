@@ -73,9 +73,9 @@ public class InterfaceFunctions {
         }
         int posicion = peso % 4099;
         try {
-            for (int i = 0; i < Global.keyWords.getArray()[peso].getSize(); i++) {
-                Node<KeyWords> pAux = Global.keyWords.getArray()[peso].getpFirst();
-                if (pAux.getData().getWord().equalsIgnoreCase(keyword)) {
+            for (int i = 0; i < Global.keyWords.getArray()[posicion].getSize(); i++) {
+                Node<KeyWords> pAux = Global.keyWords.getArray()[posicion].getpFirst();
+                if ((pAux.getData().getWord().equalsIgnoreCase(keyword)) || (pAux.getData().getWord().equalsIgnoreCase(keyword + "."))) {
                     return pAux.getData();
                 }
                 pAux = pAux.getpNext();

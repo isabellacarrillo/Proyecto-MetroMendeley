@@ -162,7 +162,9 @@ public class Functions {
                 Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
                 int pesoKW = 0;
                 String palabra = pAux.getData().getPalabra().toLowerCase();
-                
+                if (palabra.contains(".")){
+                    palabra = palabra.replace(".", "");
+                }
                 for (int k = 1; k < palabra.length(); k++) {
                     pesoKW += (int) palabra.charAt(k);
                 }
@@ -206,7 +208,7 @@ public class Functions {
             pw.write(contenido);
             pw.close();
             registered = this.read_file(contenido);
-            JOptionPane.showMessageDialog(null, "Resumen Agregado Exitosamente!");
+            JOptionPane.showMessageDialog(null, "Archivo leido Exitosamente!");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
@@ -222,6 +224,8 @@ public class Functions {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "ocurrio un error añadiendo al nueva direccion: " + e);
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ya había sido agregado.");
         }
     }
 

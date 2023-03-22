@@ -48,9 +48,9 @@ public class List {
             this.pLast = data;
         } else {
             this.getpLast().setpNext(data);
-            this.pLast = data;
+            this.setpLast(data);
         }
-        this.size += 1;
+        this.setSize(this.getSize()+1);
     }
 
     //Method to add at the start of my list
@@ -61,7 +61,7 @@ public class List {
             data.setpNext(this.getpFirst());
             this.setpFirst(data);
         }
-        this.size += 1;
+        this.setSize(this.getSize() + 1);
     }
 
     //Method to delete element at the start of the list 
@@ -128,33 +128,36 @@ public class List {
                         break;
 
                     }
-                    if ((pAux.equals(this.getpLast()))) {
-                        if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
-                            this.addEnd(pNew);
-                            break;
-                        } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
-                            esta = true;
-                            break;
-
-                        } else {
-                            if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getpNext().getData().getTitle()) < 0) {
-                                pNew.setpNext(pAux.getpNext());
-                                pAux.setpNext(pNew);
-                                break;
-                            } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
-                                esta = true;
-                                break;
-                            }
-                        }
-                    }
-                    pAux = pAux.getpNext();
                 }
+                if ((pAux.equals(this.getpLast()))) {
+                    if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) > 0) {
+                        this.addEnd(pNew);
+                        break;
+                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
+                        esta = true;
+                        break;
+                    }
+
+                } else {
+                    if (pNew.getData().getTitle().compareToIgnoreCase(pAux.getpNext().getData().getTitle()) < 0) {
+                        pNew.setpNext(pAux.getpNext());
+                        pAux.setpNext(pNew);
+                        this.setSize(this.getSize() + 1);
+                        break;
+                    } else if ((pNew.getData().getTitle().compareToIgnoreCase(pAux.getData().getTitle()) == 0)) {
+                        esta = true;
+                        break;
+                    }
+
+                }
+
+                pAux = pAux.getpNext();
             }
         }
 
     }
 
-    //Procedimiento que agrega autores al Global
+//Procedimiento que agrega autores al Global
     public void agregarAutorAlDisplay(String nombre) {
         Author newAuthor = new Author(nombre);
         Node<Author> pNew = new Node(newAuthor);
