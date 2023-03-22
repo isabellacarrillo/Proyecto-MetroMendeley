@@ -7,6 +7,7 @@ package application;
 
 import primitivas.Author;
 import primitivas.HashTable;
+import primitivas.KW;
 import primitivas.KeyWords;
 import primitivas.Node;
 import primitivas.Summary;
@@ -27,14 +28,35 @@ public class InterfaceFuncitons {
         for (int i = 0; i < title.length(); i++) {
             peso += title.charAt(i);
         }
-        for (int i = 0; i < Global.summaries.getArray()[peso].getSize(); i++) {
-            Node<Summary> pAux = Global.summaries.getArray()[i].getpFirst();
-            if (pAux.getData().getTitle().equalsIgnoreCase(title)) {
-                return pAux.getData();
+        try {
+            for (int i = 0; i < Global.summaries.getArray()[peso].getSize(); i++) {
+                Node<Summary> pAux = Global.summaries.getArray()[peso].getpFirst();
+                if (pAux.getData().getTitle().equalsIgnoreCase(title)) {
+                    return pAux.getData();
+                }
+                pAux = pAux.getpNext();
             }
-            pAux = pAux.getpNext();
+        } catch (Exception e) {
+
         }
         return null;
+    }
+
+    public String deSummaryAString(String name) {
+        String texto = "";
+        Summary summary = searchSummaryByName(name);
+        if (summary != null) {
+            texto += "Autores: \n" + summary.getAuthors() + "\n";
+            texto += "Contenido: \n " + summary.getBody();
+            texto += "\n Palabras Clave y la cantidad de veces que aparecen: ";
+            for (int i = 0; i < summary.getKeywords().getArray().length; i++) {
+
+                Node<KW> pAux = summary.getKeywords().getArray()[i].getpFirst();
+                texto += "\n" + pAux.getData().getPalabra() + ", " + pAux.getData().getFrequency();
+            }
+        }
+
+        return texto;
     }
 
     /*
