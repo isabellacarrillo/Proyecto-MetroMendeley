@@ -5,6 +5,7 @@
 package interfaces;
 
 import application.InterfaceCode;
+import application.InterfaceFuncitons;
 
 /**
  *
@@ -17,6 +18,8 @@ public class searchKeyWords extends javax.swing.JFrame {
      */
     public searchKeyWords() {
         initComponents();
+        resumenesTextArea.setLineWrap(true);
+        resumenesTextArea.setEditable(false);
     }
 
     /**
@@ -36,6 +39,8 @@ public class searchKeyWords extends javax.swing.JFrame {
         SearchSummarryButton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
         keywordsTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resumenesTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,19 +96,39 @@ public class searchKeyWords extends javax.swing.JFrame {
         });
         jPanel2.add(keywordsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, 70));
 
+        resumenesTextArea.setColumns(20);
+        resumenesTextArea.setRows(5);
+        jScrollPane1.setViewportView(resumenesTextArea);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 400, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backToTheMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToTheMenuButtonActionPerformed
-            InterfaceCode.returnToMainPage();
+        InterfaceCode.returnToMainPage();
     }//GEN-LAST:event_backToTheMenuButtonActionPerformed
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
-     
+        String palabra = " " + keywordsTextField.getText();
+        if (!palabra.equals(" ")) {
+            InterfaceFuncitons iF = new InterfaceFuncitons();
+            String resumenes = iF.deKeywordAString(palabra);
+            if (!resumenes.equals("")) {
+                resumenesTextArea.setText(resumenes);
+            }else{
+                resumenesTextArea.setText("No se encontro ningun resumen asicociado a esa palabra.");
+            }
+        }
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
 
+    public void vaciarTodo(){
+        keywordsTextField.setText("");
+        resumenesTextArea.setText("");
+    }
+    
     private void keywordsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keywordsTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_keywordsTextFieldActionPerformed
@@ -150,7 +175,9 @@ public class searchKeyWords extends javax.swing.JFrame {
     private javax.swing.JButton backToTheMenuButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField keywordsTextField;
+    private javax.swing.JTextArea resumenesTextArea;
     private javax.swing.JLabel selectedRutesLabel;
     private javax.swing.JLabel transmitterStorage;
     // End of variables declaration//GEN-END:variables
