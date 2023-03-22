@@ -127,9 +127,11 @@ public class Functions {
         //Aqui estamos agragando los resumenes
         Summary resumen = read_string(fileS);
         int peso = 0;
-        String titulo = resumen.getTitle().toLowerCase();
+        String titulo = resumen.getTitle().toLowerCase().replace("\n", "");
+        int longitud = titulo.length();
         for (int j = 0; j < titulo.length(); j++) {
-            peso += ((int) titulo.charAt(j));
+            char letra = titulo.charAt(j);
+            peso += ((int) letra);
         }
         int posicion = peso % 521;
         if (Global.summaries.getArray()[posicion] == null) {

@@ -101,7 +101,7 @@ public class Interface extends javax.swing.JFrame {
         analizeSummaryButton.setBackground(new java.awt.Color(0, 0, 0));
         analizeSummaryButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         analizeSummaryButton.setForeground(new java.awt.Color(255, 255, 255));
-        analizeSummaryButton.setText("ANALIZAR RESUMEN");
+        analizeSummaryButton.setText("BUSCAR POR NOMBRE");
         analizeSummaryButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         analizeSummaryButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         analizeSummaryButton.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +254,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_addSummaryButtonActionPerformed
 
     private void analizeSummaryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeSummaryButtonActionPerformed
-   
+        InterfaceCode.openSearhSummaries();
     }//GEN-LAST:event_analizeSummaryButtonActionPerformed
 
     private void searchKeywordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchKeywordsButtonActionPerformed
