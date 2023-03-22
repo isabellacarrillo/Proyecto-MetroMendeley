@@ -57,7 +57,7 @@ public class searchAuthor extends javax.swing.JFrame {
 
         transmitterStorage.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         transmitterStorage.setForeground(new java.awt.Color(255, 255, 255));
-        transmitterStorage.setText("Buscar Autores");
+        transmitterStorage.setText("Buscar Autores:");
         jPanel2.add(transmitterStorage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
 
         backToTheMenuButton.setBackground(new java.awt.Color(153, 0, 0));
@@ -138,6 +138,9 @@ public class searchAuthor extends javax.swing.JFrame {
         this.resumenesTextArea.setText(texto);
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
 
+    public void vaciar(){
+        resumenesTextArea.setText("");
+    }
     private void authorsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsComboBoxActionPerformed
         
     }//GEN-LAST:event_authorsComboBoxActionPerformed

@@ -49,6 +49,8 @@ public class searchKeyWords extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 119, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setMinimumSize(new java.awt.Dimension(440, 313));
+        jPanel2.setPreferredSize(new java.awt.Dimension(440, 313));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         selectedRutesLabel.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -114,13 +116,13 @@ public class searchKeyWords extends javax.swing.JFrame {
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
         String palabra = " " + keywordsTextField.getText();
-        if (!palabra.equals(" ")) {
+        if (!palabra.equals("")) {
             InterfaceFunctions iF = new InterfaceFunctions();
             String resumenes = iF.deKeywordAString(palabra);
             if (!resumenes.equals("")) {
                 resumenesTextArea.setText(resumenes);
             }else{
-                resumenesTextArea.setText("No se encontro ningun resumen asicociado a esa palabra.");
+                resumenesTextArea.setText("No se encontro ningun resumen asociado a esa palabra.");
             }
         }
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
