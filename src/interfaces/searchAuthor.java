@@ -6,7 +6,7 @@ package interfaces;
 
 import application.Global;
 import application.InterfaceCode;
-import application.InterfaceFuncitons;
+import application.InterfaceFunctions;
 
 /**
  *
@@ -57,7 +57,7 @@ public class searchAuthor extends javax.swing.JFrame {
 
         transmitterStorage.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         transmitterStorage.setForeground(new java.awt.Color(255, 255, 255));
-        transmitterStorage.setText("Buscar Autores");
+        transmitterStorage.setText("Buscar Autores:");
         jPanel2.add(transmitterStorage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
 
         backToTheMenuButton.setBackground(new java.awt.Color(153, 0, 0));
@@ -95,6 +95,7 @@ public class searchAuthor extends javax.swing.JFrame {
         });
         jPanel2.add(authorsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, 40));
 
+        resumenesTextArea.setBackground(new java.awt.Color(255, 255, 255));
         resumenesTextArea.setColumns(20);
         resumenesTextArea.setRows(5);
         jScrollPane1.setViewportView(resumenesTextArea);
@@ -131,19 +132,22 @@ public class searchAuthor extends javax.swing.JFrame {
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
         this.resumenesTextArea.setText("");
-        InterfaceFuncitons iF = new InterfaceFuncitons();
+        InterfaceFunctions iF = new InterfaceFunctions();
         String autor = this.authorsComboBox.getSelectedItem().toString();
         String texto = iF.deAutorAString(autor);
         this.resumenesTextArea.setText(texto);
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
 
+    public void vaciar(){
+        resumenesTextArea.setText("");
+    }
     private void authorsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsComboBoxActionPerformed
         
     }//GEN-LAST:event_authorsComboBoxActionPerformed
 
     public void llenarComboBox(){
         this.authorsComboBox.removeAllItems();
-        InterfaceFuncitons iF = new InterfaceFuncitons();
+        InterfaceFunctions iF = new InterfaceFunctions();
         String[] itemsDelComboBox = iF.deListaDeAutoresAArray();
         for (int i = 0; i < itemsDelComboBox.length; i++) {
             this.authorsComboBox.addItem(itemsDelComboBox[i]);

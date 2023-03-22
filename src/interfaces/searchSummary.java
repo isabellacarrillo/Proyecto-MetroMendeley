@@ -6,7 +6,7 @@
 package interfaces;
 
 import application.InterfaceCode;
-import application.InterfaceFuncitons;
+import application.InterfaceFunctions;
 
 /**
  *
@@ -53,7 +53,7 @@ public class searchSummary extends javax.swing.JFrame {
 
         transmitterStorage.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         transmitterStorage.setForeground(new java.awt.Color(255, 255, 255));
-        transmitterStorage.setText("Buscar datos de resumenes:");
+        transmitterStorage.setText("Buscar datos del resumen :");
         jPanel2.add(transmitterStorage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, -1));
 
         backToTheMenuButton.setBackground(new java.awt.Color(153, 0, 0));
@@ -82,12 +82,14 @@ public class searchSummary extends javax.swing.JFrame {
 
         jPanel2.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        resumenesTextArea.setBackground(new java.awt.Color(255, 255, 255));
         resumenesTextArea.setColumns(20);
         resumenesTextArea.setRows(5);
         jScrollPane1.setViewportView(resumenesTextArea);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 400, 390));
 
+        resumenesComboBox.setBackground(new java.awt.Color(255, 255, 255));
         resumenesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(resumenesComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 440, 40));
 
@@ -95,21 +97,11 @@ public class searchSummary extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -121,7 +113,7 @@ public class searchSummary extends javax.swing.JFrame {
 
         public void llenarComboBox(){
         this.resumenesComboBox.removeAllItems();
-        InterfaceFuncitons iF = new InterfaceFuncitons();
+        InterfaceFunctions iF = new InterfaceFunctions();
         String[] itemsDelComboBox = iF.deListaDeResumenesAArray();
         for (int i = 0; i < itemsDelComboBox.length; i++) {
             this.resumenesComboBox.addItem(itemsDelComboBox[i]);
@@ -130,12 +122,15 @@ public class searchSummary extends javax.swing.JFrame {
     
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
         this.resumenesTextArea.setText("");
-        InterfaceFuncitons iF = new InterfaceFuncitons();
+        InterfaceFunctions iF = new InterfaceFunctions();
         String resumen = this.resumenesComboBox.getSelectedItem().toString();
         String texto = iF.deSummaryAString(resumen);
         this.resumenesTextArea.setText(texto);
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
 
+    public void vaciar(){
+        resumenesTextArea.setText("");
+    }
     /**
      * @param args the command line arguments
      */

@@ -42,7 +42,12 @@ public class InterfaceCode {
     public static void returnToMainPage() {
         getMain().setVisible(true);
         getAuthorInterface().setVisible(false);
+        buscarAutor.vaciar();
         getKeyWordsInterface().setVisible(false);
+        buscarPalabras.vaciarTodo();
+        getBuscarResumenes().setVisible(false);
+        buscarResumenes.vaciar();
+        
 
     }
     
@@ -64,6 +69,11 @@ public class InterfaceCode {
         getKeyWordsInterface().setVisible(true);
         getMain().setVisible(false);
 
+    }
+    public static void exitInterface(){
+        System.exit(0);
+        
+        
     }
 
     /**

@@ -17,7 +17,7 @@ import primitivas.SummaryTitle;
  *
  * @author Andres
  */
-public class InterfaceFuncitons {
+public class InterfaceFunctions {
 
     /*
     Estos metodos son para la busqueda del resumen

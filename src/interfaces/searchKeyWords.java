@@ -5,7 +5,7 @@
 package interfaces;
 
 import application.InterfaceCode;
-import application.InterfaceFuncitons;
+import application.InterfaceFunctions;
 
 /**
  *
@@ -34,13 +34,13 @@ public class searchKeyWords extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         selectedRutesLabel = new javax.swing.JLabel();
-        transmitterStorage = new javax.swing.JLabel();
         backToTheMenuButton = new javax.swing.JButton();
         SearchSummarryButton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
         keywordsTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         resumenesTextArea = new javax.swing.JTextArea();
+        transmitterStorage1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,17 +49,14 @@ public class searchKeyWords extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 119, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setMinimumSize(new java.awt.Dimension(440, 313));
+        jPanel2.setPreferredSize(new java.awt.Dimension(440, 313));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         selectedRutesLabel.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         selectedRutesLabel.setForeground(new java.awt.Color(255, 255, 255));
         selectedRutesLabel.setText(" Resumen:");
         jPanel2.add(selectedRutesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 180, -1));
-
-        transmitterStorage.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        transmitterStorage.setForeground(new java.awt.Color(255, 255, 255));
-        transmitterStorage.setText("Buscar Palabras Claves");
-        jPanel2.add(transmitterStorage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
 
         backToTheMenuButton.setBackground(new java.awt.Color(153, 0, 0));
         backToTheMenuButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -96,11 +93,17 @@ public class searchKeyWords extends javax.swing.JFrame {
         });
         jPanel2.add(keywordsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 240, 70));
 
+        resumenesTextArea.setBackground(new java.awt.Color(255, 255, 255));
         resumenesTextArea.setColumns(20);
         resumenesTextArea.setRows(5);
         jScrollPane1.setViewportView(resumenesTextArea);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 400, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 420, 110));
+
+        transmitterStorage1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        transmitterStorage1.setForeground(new java.awt.Color(255, 255, 255));
+        transmitterStorage1.setText("Buscar Palabras Claves");
+        jPanel2.add(transmitterStorage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 360));
 
@@ -113,13 +116,13 @@ public class searchKeyWords extends javax.swing.JFrame {
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
         String palabra = " " + keywordsTextField.getText();
-        if (!palabra.equals(" ")) {
-            InterfaceFuncitons iF = new InterfaceFuncitons();
+        if (!palabra.equals("")) {
+            InterfaceFunctions iF = new InterfaceFunctions();
             String resumenes = iF.deKeywordAString(palabra);
             if (!resumenes.equals("")) {
                 resumenesTextArea.setText(resumenes);
             }else{
-                resumenesTextArea.setText("No se encontro ningun resumen asicociado a esa palabra.");
+                resumenesTextArea.setText("No se encontro ningun resumen asociado a esa palabra.");
             }
         }
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
@@ -179,6 +182,6 @@ public class searchKeyWords extends javax.swing.JFrame {
     private javax.swing.JTextField keywordsTextField;
     private javax.swing.JTextArea resumenesTextArea;
     private javax.swing.JLabel selectedRutesLabel;
-    private javax.swing.JLabel transmitterStorage;
+    private javax.swing.JLabel transmitterStorage1;
     // End of variables declaration//GEN-END:variables
 }
