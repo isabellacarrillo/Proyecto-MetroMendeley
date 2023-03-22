@@ -24,13 +24,16 @@ public class InterfaceFuncitons {
      */
     public Summary searchSummaryByName(String title) {
         int peso = 0;
-        String titleLower = title.toLowerCase();
-        for (int i = 0; i < title.length(); i++) {
-            peso += title.charAt(i);
+        String titleLower = title.toLowerCase().replace("\n","");
+        int longitud = titleLower.length();
+        for (int i = 0; i < longitud; i++) {
+            char letra = titleLower.charAt(i);
+            peso += (int) letra;
         }
+        int posicion = peso % 521;
         try {
-            for (int i = 0; i < Global.summaries.getArray()[peso].getSize(); i++) {
-                Node<Summary> pAux = Global.summaries.getArray()[peso].getpFirst();
+            for (int i = 0; i < Global.summaries.getArray()[posicion].getSize(); i++) {
+                Node<Summary> pAux = Global.summaries.getArray()[posicion].getpFirst();
                 if (pAux.getData().getTitle().equalsIgnoreCase(title)) {
                     return pAux.getData();
                 }
