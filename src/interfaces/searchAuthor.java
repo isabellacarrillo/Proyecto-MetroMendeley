@@ -4,7 +4,9 @@
  */
 package interfaces;
 
+import application.Global;
 import application.InterfaceCode;
+import application.InterfaceFunctions;
 
 /**
  *
@@ -17,6 +19,8 @@ public class searchAuthor extends javax.swing.JFrame {
      */
     public searchAuthor() {
         initComponents();
+        resumenesTextArea.setEditable(false);
+        resumenesTextArea.setLineWrap(true);
     }
 
     /**
@@ -36,6 +40,8 @@ public class searchAuthor extends javax.swing.JFrame {
         SearchSummarryButton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
         authorsComboBox = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resumenesTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +88,19 @@ public class searchAuthor extends javax.swing.JFrame {
 
         authorsComboBox.setBackground(new java.awt.Color(255, 255, 255));
         authorsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        authorsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                authorsComboBoxActionPerformed(evt);
+            }
+        });
         jPanel2.add(authorsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, 40));
+
+        resumenesTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        resumenesTextArea.setColumns(20);
+        resumenesTextArea.setRows(5);
+        jScrollPane1.setViewportView(resumenesTextArea);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 213, 390, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,9 +131,26 @@ public class searchAuthor extends javax.swing.JFrame {
     }//GEN-LAST:event_backToTheMenuButtonActionPerformed
 
     private void SearchSummarryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchSummarryButtonActionPerformed
-
+        this.resumenesTextArea.setText("");
+        InterfaceFunctions iF = new InterfaceFunctions();
+        String autor = this.authorsComboBox.getSelectedItem().toString();
+        String texto = iF.deAutorAString(autor);
+        this.resumenesTextArea.setText(texto);
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
 
+    private void authorsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsComboBoxActionPerformed
+        
+    }//GEN-LAST:event_authorsComboBoxActionPerformed
+
+    public void llenarComboBox(){
+        this.authorsComboBox.removeAllItems();
+        InterfaceFunctions iF = new InterfaceFunctions();
+        String[] itemsDelComboBox = iF.deListaDeAutoresAArray();
+        for (int i = 0; i < itemsDelComboBox.length; i++) {
+            this.authorsComboBox.addItem(itemsDelComboBox[i]);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -158,6 +193,8 @@ public class searchAuthor extends javax.swing.JFrame {
     private javax.swing.JButton backToTheMenuButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea resumenesTextArea;
     private javax.swing.JLabel selectedRutesLabel;
     private javax.swing.JLabel transmitterStorage;
     // End of variables declaration//GEN-END:variables

@@ -1,7 +1,3 @@
 src\archive\resumen1.txt
 src\archive\resumen2.txt
 src\archive\resumen1.txt
-src\archive\resumen2.txt
-src\archive\resumen1.txt
-src\archive\resumen2.txt
-src\archive\direcciones.txt

@@ -142,8 +142,9 @@ public class Functions {
             String[] autores = resumen.getAuthors().split("\n");
             for (int j = 0; j < autores.length; j++) {
                 int pesoA = 0;
+                String autor = autores[j].toLowerCase();
                 for (int k = 0; k < autores[j].length(); k++) {
-                    pesoA += (int) autores[j].charAt(k);
+                    pesoA += (int) autor.charAt(k);
                 }
                 int posicionA = pesoA % 1031;
                 if (Global.authors.getArray()[posicionA] == null) {
@@ -158,7 +159,8 @@ public class Functions {
             for (int j = 0; j < resumen.getKeywords().getArray().length; j++) {
                 Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
                 int pesoKW = 0;
-                String palabra = pAux.getData().getPalabra();
+                String palabra = pAux.getData().getPalabra().toLowerCase();
+                
                 for (int k = 1; k < palabra.length(); k++) {
                     pesoKW += (int) palabra.charAt(k);
                 }

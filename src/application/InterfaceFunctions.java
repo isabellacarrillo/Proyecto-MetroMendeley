@@ -7,6 +7,7 @@ package application;
 
 import primitivas.Author;
 import primitivas.HashTable;
+import primitivas.KW;
 import primitivas.KeyWords;
 import primitivas.Node;
 import primitivas.Summary;
@@ -27,14 +28,35 @@ public class InterfaceFunctions {
         for (int i = 0; i < title.length(); i++) {
             peso += title.charAt(i);
         }
-        for (int i = 0; i < Global.summaries.getArray()[peso].getSize(); i++) {
-            Node<Summary> pAux = Global.summaries.getArray()[i].getpFirst();
-            if (pAux.getData().getTitle().equalsIgnoreCase(title)) {
-                return pAux.getData();
+        try {
+            for (int i = 0; i < Global.summaries.getArray()[peso].getSize(); i++) {
+                Node<Summary> pAux = Global.summaries.getArray()[peso].getpFirst();
+                if (pAux.getData().getTitle().equalsIgnoreCase(title)) {
+                    return pAux.getData();
+                }
+                pAux = pAux.getpNext();
             }
-            pAux = pAux.getpNext();
+        } catch (Exception e) {
+
         }
         return null;
+    }
+
+    public String deSummaryAString(String name) {
+        String texto = "";
+        Summary summary = searchSummaryByName(name);
+        if (summary != null) {
+            texto += "Autores: \n" + summary.getAuthors() + "\n";
+            texto += "Contenido: \n " + summary.getBody();
+            texto += "\n Palabras Clave y la cantidad de veces que aparecen: ";
+            for (int i = 0; i < summary.getKeywords().getArray().length; i++) {
+
+                Node<KW> pAux = summary.getKeywords().getArray()[i].getpFirst();
+                texto += "\n" + pAux.getData().getPalabra() + ", " + pAux.getData().getFrequency();
+            }
+        }
+
+        return texto;
     }
 
     /*
@@ -43,17 +65,34 @@ public class InterfaceFunctions {
     public KeyWords searchKeywordByName(String keyword) {
         int peso = 0;
         String keywordLower = keyword.toLowerCase();
-        for (int i = 0; i < keywordLower.length(); i++) {
+        for (int i = 1; i < keywordLower.length(); i++) {
             peso += keywordLower.charAt(i);
         }
-        for (int i = 0; i < Global.keyWords.getArray()[peso].getSize(); i++) {
-            Node<KeyWords> pAux = Global.keyWords.getArray()[i].getpFirst();
-            if (pAux.getData().getWord().equalsIgnoreCase(keyword)) {
-                return pAux.getData();
+        int posicion = peso % 4099;
+        try {
+            for (int i = 0; i < Global.keyWords.getArray()[peso].getSize(); i++) {
+                Node<KeyWords> pAux = Global.keyWords.getArray()[peso].getpFirst();
+                if (pAux.getData().getWord().equalsIgnoreCase(keyword)) {
+                    return pAux.getData();
+                }
+                pAux = pAux.getpNext();
             }
-            pAux = pAux.getpNext();
+        } catch (Exception e) {
+
         }
         return null;
+    }
+
+    public String deKeywordAString(String name) {
+        String texto = "";
+        KeyWords keyword = searchKeywordByName(name);
+        if (keyword != null) {
+            Node<SummaryTitle> pAux = keyword.getSummary().getpFirst();
+            for (int i = 0; i < keyword.getSummary().getSize(); i++) {
+                texto += pAux.getData().getTitle();
+            }
+        }
+        return texto;
     }
 
     /*
@@ -63,16 +102,27 @@ public class InterfaceFunctions {
         int peso = 0;
         String nameLower = name.toLowerCase();
         for (int i = 0; i < nameLower.length(); i++) {
-            peso += nameLower.charAt(i);
+            peso += (int) nameLower.charAt(i);
         }
-        for (int i = 0; i < Global.authors.getArray()[peso].getSize(); i++) {
-            Node<Author> pAux = Global.authors.getArray()[i].getpFirst();
+        int posicion = peso % 1031;
+        for (int i = 0; i < Global.authors.getArray()[posicion].getSize(); i++) {
+            Node<Author> pAux = Global.authors.getArray()[posicion].getpFirst();
             if (pAux.getData().getName().equalsIgnoreCase(name)) {
                 return pAux.getData();
             }
             pAux = pAux.getpNext();
         }
         return null;
+    }
+
+    public String deAutorAString(String name) {
+        String texto = "";
+        Author autor = searchAuthorByName(name);
+        Node<SummaryTitle> pAux = autor.getSummaries().getpFirst();
+        for (int i = 0; i < autor.getSummaries().getSize(); i++) {
+            texto += pAux.getData().getTitle();
+        }
+        return texto;
     }
 
     /*
@@ -100,7 +150,5 @@ public class InterfaceFunctions {
         }
         return autores;
     }
-
-
 
 }

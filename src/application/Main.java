@@ -18,9 +18,8 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         
-        Functions f = new Functions();
         Global.initializeApp();
-        f.initializeData();
+        InterfaceCode.openMainPage();
         
     }
     

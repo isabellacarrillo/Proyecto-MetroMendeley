@@ -20,6 +20,8 @@ public class InterfaceCode {
         
 
         public static void openMainPage(){
+            Functions f = new Functions();
+            f.initializeData();
             getMain().setVisible(true);
         }
         
@@ -50,12 +52,20 @@ public class InterfaceCode {
     public static void openSearchAuthor(){
         getAuthorInterface().setVisible(true);
         getMain().setVisible(false);
+        getAuthorInterface().llenarComboBox();
     }
     
     public static void openSearchKeyWords(){
+        getKeyWordsInterface();
         getKeyWordsInterface().setVisible(true);
         getMain().setVisible(false);
         
+        
+    }
+    public static void exitInterface(){
+        getMain().setVisible(false);
+        getAuthorInterface().setVisible(false);
+        getKeyWordsInterface().setVisible(false);
         
     }
 

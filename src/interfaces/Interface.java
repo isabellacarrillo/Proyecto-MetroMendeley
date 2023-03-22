@@ -193,7 +193,7 @@ public class Interface extends javax.swing.JFrame {
         exitButton.setBackground(new java.awt.Color(0, 0, 0));
         exitButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         exitButton.setForeground(new java.awt.Color(255, 255, 255));
-        exitButton.setText("SALIR/GUARDAR INFO");
+        exitButton.setText("SALIR");
         exitButton.setBorder(null);
         exitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -262,7 +262,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_searchKeywordsButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-
+        InterfaceCode.exitInterface();
       
     }//GEN-LAST:event_exitButtonActionPerformed
 
