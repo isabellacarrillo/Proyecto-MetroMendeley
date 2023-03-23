@@ -24,6 +24,7 @@ public class InterfaceCode {
         Functions f = new Functions();
         f.initializeData();
         getMain().setVisible(true);
+        getMain().setLocationRelativeTo(null);
     }
 
     // Methods to initialize my interface 
@@ -55,6 +56,7 @@ public class InterfaceCode {
         getMain().setVisible(false);
         getBuscarResumenes().llenarComboBox();
         getBuscarResumenes().setVisible(true);
+        getBuscarResumenes().setLocationRelativeTo(null);
         
     }
 
@@ -62,12 +64,14 @@ public class InterfaceCode {
         getAuthorInterface().setVisible(true);
         getMain().setVisible(false);
         getAuthorInterface().llenarComboBox();
+        getAuthorInterface().setLocationRelativeTo(null);
     }
 
     public static void openSearchKeyWords() {
         getKeyWordsInterface();
         getKeyWordsInterface().setVisible(true);
         getMain().setVisible(false);
+        getKeyWordsInterface().setLocationRelativeTo(null);
 
     }
     public static void exitInterface(){
