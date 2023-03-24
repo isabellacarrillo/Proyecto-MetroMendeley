@@ -56,6 +56,7 @@ public class InterfaceFunctions {
 
                 Node<KW> pAux = summary.getKeywords().getArray()[i].getpFirst();
                 texto += "\n" + pAux.getData().getPalabra() + ", " + pAux.getData().getFrequency();
+                pAux = pAux.getpNext();
             }
         }
 
@@ -93,6 +94,7 @@ public class InterfaceFunctions {
             Node<SummaryTitle> pAux = keyword.getSummary().getpFirst();
             for (int i = 0; i < keyword.getSummary().getSize(); i++) {
                 texto += pAux.getData().getTitle();
+                pAux = pAux.getpNext();
             }
         }
         return texto;
@@ -124,6 +126,7 @@ public class InterfaceFunctions {
         Node<SummaryTitle> pAux = autor.getSummaries().getpFirst();
         for (int i = 0; i < autor.getSummaries().getSize(); i++) {
             texto += pAux.getData().getTitle();
+            pAux = pAux.getpNext();
         }
         return texto;
     }
