@@ -7,6 +7,7 @@ package interfaces;
 import application.Global;
 import application.InterfaceCode;
 import application.InterfaceFunctions;
+import java.awt.Component;
 
 /**
  *
@@ -100,7 +101,7 @@ public class searchAuthor extends javax.swing.JFrame {
         resumenesTextArea.setRows(5);
         jScrollPane1.setViewportView(resumenesTextArea);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 213, 390, 100));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 213, 450, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,6 +137,7 @@ public class searchAuthor extends javax.swing.JFrame {
         String autor = this.authorsComboBox.getSelectedItem().toString();
         String texto = iF.deAutorAString(autor);
         this.resumenesTextArea.setText(texto);
+        this.resumenesTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
     }//GEN-LAST:event_SearchSummarryButtonActionPerformed
 
     public void vaciar(){

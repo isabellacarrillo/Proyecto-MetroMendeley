@@ -32,8 +32,8 @@ public class searchSummary extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        selectedRutesLabel = new javax.swing.JLabel();
-        transmitterStorage = new javax.swing.JLabel();
+        summarylabel = new javax.swing.JLabel();
+        searchdatalabel = new javax.swing.JLabel();
         backToTheMenuButton = new javax.swing.JButton();
         SearchSummarryButton = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
@@ -46,15 +46,15 @@ public class searchSummary extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        selectedRutesLabel.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        selectedRutesLabel.setForeground(new java.awt.Color(255, 255, 255));
-        selectedRutesLabel.setText(" Resumen:");
-        jPanel2.add(selectedRutesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 180, -1));
+        summarylabel.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        summarylabel.setForeground(new java.awt.Color(255, 255, 255));
+        summarylabel.setText(" Resumen:");
+        jPanel2.add(summarylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 180, -1));
 
-        transmitterStorage.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        transmitterStorage.setForeground(new java.awt.Color(255, 255, 255));
-        transmitterStorage.setText("Buscar datos del resumen :");
-        jPanel2.add(transmitterStorage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, -1));
+        searchdatalabel.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        searchdatalabel.setForeground(new java.awt.Color(255, 255, 255));
+        searchdatalabel.setText("Buscar datos del resumen :");
+        jPanel2.add(searchdatalabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, -1));
 
         backToTheMenuButton.setBackground(new java.awt.Color(153, 0, 0));
         backToTheMenuButton.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -174,7 +174,7 @@ public class searchSummary extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> resumenesComboBox;
     private javax.swing.JTextArea resumenesTextArea;
-    private javax.swing.JLabel selectedRutesLabel;
-    private javax.swing.JLabel transmitterStorage;
+    private javax.swing.JLabel searchdatalabel;
+    private javax.swing.JLabel summarylabel;
     // End of variables declaration//GEN-END:variables
 }
