@@ -162,7 +162,7 @@ public class Functions {
                 Node<KW> pAux = resumen.getKeywords().getArray()[j].getpFirst();
                 int pesoKW = 0;
                 String palabra = pAux.getData().getPalabra().toLowerCase();
-                if (palabra.contains(".")){
+                if (palabra.contains(".")) {
                     palabra = palabra.replace(".", "");
                 }
                 for (int k = 1; k < palabra.length(); k++) {
@@ -182,56 +182,57 @@ public class Functions {
         return resumen.getIsRepeated();
     }
 
-    
     /*
     Dado un archivo, se lee y se empieza a agregart a las variables globales, en caso de que ya este, no hace mas nada. Si no esta, agrega a las 
     variables globales los datos nuievos y agrega la direccion all archivo direcciones.txt
-    */
+     */
     public void access_new_file() throws IOException {
         boolean registered = false;
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("", ".txt", "txt");
         fc.setFileFilter(filtro);
         int seleccion = fc.showOpenDialog(fc);
-        String path = fc.getSelectedFile().getAbsolutePath();
-        File fileImport = new File(path);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            String path = fc.getSelectedFile().getAbsolutePath();
+            File fileImport = new File(path);
 
-        String newPath = "src\\archive\\" + fileImport.getName();
-        String contenido = this.read_txt(path);
+            String newPath = "src\\archive\\" + fileImport.getName();
+            String contenido = this.read_txt(path);
 
-        File newFile = new File(newPath);
-        try {
-            if (!newFile.exists()) {
-                newFile.createNewFile();
-            }
-            PrintWriter pw = new PrintWriter(newFile.getAbsolutePath());
-            pw.write(contenido);
-            pw.close();
-            registered = this.read_file(contenido);
-            JOptionPane.showMessageDialog(null, "Archivo leido Exitosamente!");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e);
-        }
-
-        if (!registered) {
+            File newFile = new File(newPath);
             try {
-                String direcciones = "";
-                direcciones = this.read_directions() + newPath;
-                PrintWriter pw = new PrintWriter("src\\archive\\direcciones.txt");
-                pw.print(direcciones);
+                if (!newFile.exists()) {
+                    newFile.createNewFile();
+                }
+                PrintWriter pw = new PrintWriter(newFile.getAbsolutePath());
+                pw.write(contenido);
                 pw.close();
+                registered = this.read_file(contenido);
+                JOptionPane.showMessageDialog(null, "Archivo leido Exitosamente!");
+
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ocurrio un error añadiendo al nueva direccion: " + e);
+                JOptionPane.showMessageDialog(null, "Error: " + e);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Ya había sido agregado.");
+
+            if (!registered) {
+                try {
+                    String direcciones = "";
+                    direcciones = this.read_directions() + newPath;
+                    PrintWriter pw = new PrintWriter("src\\archive\\direcciones.txt");
+                    pw.print(direcciones);
+                    pw.close();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "ocurrio un error añadiendo al nueva direccion: " + e);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ya había sido agregado.");
+            }
         }
     }
 
     /*
     Procedimiento que carga la data incial.
-    */
+     */
     public void loadIntialData() {
         String direcciones = this.read_directions();
         String[] direccion = direcciones.split("\n");

@@ -20,6 +20,7 @@ public class searchSummary extends javax.swing.JFrame {
     public searchSummary() {
         initComponents();
         resumenesTextArea.setEditable(false);
+        resumenesTextArea.setLineWrap(true);
     }
 
     /**
